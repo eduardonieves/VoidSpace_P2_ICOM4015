@@ -9,6 +9,6 @@ VoidSpace is a java application that consists in a game similar to Galaga. The o
 - [x] Scoring System
 
 ##Optional user stories
--[x] Add Game Music
--[x] Add Ship ThrusterImage
--[x] Add Game Over Sound
+- [x] Add Game Music
+- [x] Add Ship ThrusterImage
+- [x] Add Game Over Sound
