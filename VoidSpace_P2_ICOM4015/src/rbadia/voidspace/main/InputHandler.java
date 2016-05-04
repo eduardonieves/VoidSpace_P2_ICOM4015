@@ -14,7 +14,7 @@ public class InputHandler implements KeyListener{
 	private boolean downIsPressed;
 	private boolean upIsPressed;
 	private boolean spaceIsPressed;
-	private boolean shiftIsPressed;
+	public  static boolean shiftIsPressed;
 	
 	private long lastBulletTime;
 	
@@ -144,7 +144,7 @@ public class InputHandler implements KeyListener{
 			}
 			break;
 		case KeyEvent.VK_SHIFT:
-			this.shiftIsPressed = true;
+			InputHandler.shiftIsPressed = true;
 			break;
 		case KeyEvent.VK_ESCAPE:
 			System.exit(1);
@@ -174,7 +174,7 @@ public class InputHandler implements KeyListener{
 			this.spaceIsPressed = false;
 			break;
 		case KeyEvent.VK_SHIFT:
-			this.shiftIsPressed = false;
+			InputHandler.shiftIsPressed = false;
 			Ship ship = gameLogic.getShip(); 
 			ship.setSpeed(ship.getDefaultSpeed());
 			break;

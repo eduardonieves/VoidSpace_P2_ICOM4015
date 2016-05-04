@@ -17,7 +17,9 @@ import rbadia.voidspace.model.Ship;
  * Manages and draws game graphics and images.
  */
 public class GraphicsManager {
+	private BufferedImage gameTitle;
 	private BufferedImage shipImg;
+	private BufferedImage shipThrusterImg;
 	private BufferedImage bulletImg;
 	private BufferedImage asteroidImg;
 	private BufferedImage asteroidExplosionImg;
@@ -31,9 +33,11 @@ public class GraphicsManager {
 	public GraphicsManager(){
     	// load images
 		try {
+			this.gameTitle = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/VoidSpaceLogo.png"));
 			this.shipImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/ship.png"));
 			this.asteroidImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/asteroid.png"));
 			this.asteroidExplosionImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/asteroidExplosion.png"));
+			this.shipThrusterImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/shipThruster.png"));
 			this.shipExplosionImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/shipExplosion.png"));
 			this.bulletImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/bullet.png"));
 			this.enemyShipImg=ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/EnemyShip.png"));
@@ -44,6 +48,16 @@ public class GraphicsManager {
 			e.printStackTrace();
 			System.exit(-1);
 		}
+	}
+	
+	/**
+	 * Draws the Game Title to the specified graphics canvas.
+	 * @param rectangle
+	 * @param g2d
+	 * @param observer
+	 */
+	public void drawGameTitle(Rectangle rectangle, Graphics2D g2d, ImageObserver observer) {
+		g2d.drawImage(gameTitle, rectangle.x, rectangle.y, observer);
 	}
 
 	/**
@@ -56,6 +70,15 @@ public class GraphicsManager {
 		g2d.drawImage(shipImg, ship.x, ship.y, observer);
 	}
 
+	/**
+	 * Draws the ship thruster when shift key is pressed
+	 * @param ship
+	 * @param g2d
+	 * @param observer
+	 */
+	public void drawShipThruster(Ship ship, Graphics2D g2d, ImageObserver observer) {
+		g2d.drawImage(shipThrusterImg, ship.x, ship.y, observer);
+	}
 	/**
 	 * Draws a bullet image to the specified graphics canvas.
 	 * @param bullet the bullet to draw
