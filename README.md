@@ -7,3 +7,8 @@ VoidSpace is a java application that consists in a game similar to Galaga. The o
 - [x] Asteroids move on horizontal and diagonal directions
 - [x] Enemy ships that fires at you
 - [x] Scoring System
+
+##Optional user stories
+-[x] Add Game Music
+-[x] Add Ship ThrusterImage
+-[x] Add Game Over Sound
