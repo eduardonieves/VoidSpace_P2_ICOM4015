@@ -78,6 +78,9 @@ public class GameScreen extends JPanel {
 		super();
 		// initialize random number generator
 		rand = new Random();
+		Random rand2 = new Random();
+		int n = rand2.nextInt(2)+1;
+		System.out.println(n);
 
 		initialize();
 
@@ -192,13 +195,14 @@ public class GameScreen extends JPanel {
 						graphicsMan.drawAsteroidExplosion(asteroidExplosion, g2d, this);
 					}
 				}
-				else{if(ast.getY() + ast.getSpeed() < this.getHeight()){
-					ast.translate(0, ast.getSpeed());
-					graphicsMan.drawAsteroid(asteroid.get(i), g2d, this);
-				}
 				else{
-					ast.setLocation(rand.nextInt(400 - 50 + 1) + 50, (int) -ast.getHeight());
-				}
+					if(ast.getY() + ast.getSpeed() < this.getHeight()){
+						ast.translate(0, ast.getSpeed());
+						graphicsMan.drawAsteroid(asteroid.get(i), g2d, this);
+					}
+					else{
+						ast.setLocation(rand.nextInt(400 - 50 + 1) + 50, (int) -ast.getHeight());
+					}
 				}
 			}
 			

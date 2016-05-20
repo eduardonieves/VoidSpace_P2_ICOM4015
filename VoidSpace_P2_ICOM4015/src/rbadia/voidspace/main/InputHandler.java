@@ -14,6 +14,7 @@ public class InputHandler implements KeyListener{
 	private boolean downIsPressed;
 	private boolean upIsPressed;
 	private boolean spaceIsPressed;
+	private boolean cIsPressed;
 	public  static boolean shiftIsPressed;
 	
 	private long lastBulletTime;
@@ -62,6 +63,9 @@ public class InputHandler implements KeyListener{
 			if(leftIsPressed){
 				moveShipLeft(ship);
 			}
+			if(cIsPressed){
+				centerShip(ship, gameScreen.getHeight());
+			}
 
 			if(rightIsPressed){
 				moveShipRight(ship, gameScreen.getWidth());
@@ -109,6 +113,12 @@ public class InputHandler implements KeyListener{
 		}
 	}
 	
+	private void centerShip(Ship ship, int screenHeight){
+		if(ship.getY() - ship.getSpeed() >= 0){
+		ship.setLocation((int) ship.getX(), screenHeight/2);
+		}
+	}
+	
 	/**
 	 * Handle a key input event.
 	 */
@@ -146,6 +156,9 @@ public class InputHandler implements KeyListener{
 		case KeyEvent.VK_SHIFT:
 			InputHandler.shiftIsPressed = true;
 			break;
+		case KeyEvent.VK_C:
+			this.cIsPressed = true;
+			break;
 		case KeyEvent.VK_ESCAPE:
 			System.exit(1);
 			break;
@@ -178,6 +191,8 @@ public class InputHandler implements KeyListener{
 			Ship ship = gameLogic.getShip(); 
 			ship.setSpeed(ship.getDefaultSpeed());
 			break;
+		case KeyEvent.VK_C:
+			this.cIsPressed = false;
 		}
 		e.consume();
 	}
